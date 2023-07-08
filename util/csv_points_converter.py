@@ -37,6 +37,8 @@ def convert_to_points(str_matrix: np.ma.masked_array, distance_m: float) -> List
     azimuth_size = math.ceil(MAX_PULSE_LENGTH / 24)
     # print(f"canvas size is 16x{azimuth_size}")
     for azimuth in range(0, azimuth_size):
+        if azimuth >= str_matrix.shape[1]:
+            continue
         for vertical in range(0, 24):
             vertical_angle = vertical_to_angle(vertical)
             if vertical_angle is not None and str_matrix.mask[vertical_angle_to_img_index(vertical_angle), azimuth]:
