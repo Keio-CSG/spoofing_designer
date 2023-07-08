@@ -16,5 +16,5 @@ def load_csv_with_mask(path: str):
     """
     data = np.loadtxt(path, delimiter=",", dtype=np.object_)
     mask = v_is_integer(data)
-    data = np.where(mask, data, 0).astype(np.int)
+    data = np.where(mask, data, 0).astype(np.int32)
     return np.ma.masked_array(data, mask)
